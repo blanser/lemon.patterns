@@ -184,4 +184,6 @@ package pos {
  object semiColon extends POS
  object slash extends POS
  object verb extends POS
+ object adjectiveNa extends POS
+ object adjectiveI extends POS
 }

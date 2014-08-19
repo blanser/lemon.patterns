@@ -21,6 +21,7 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
                              Absyn.Category.Visitor[(URI,URI),collection.mutable.Map[String,String]] with
                              Absyn.POSTag.Visitor[POS,collection.mutable.Map[String,String]] with
                              Absyn.Gender.Visitor[Gender,collection.mutable.Map[String,String]] with
+                             Absyn.AdjTypeJa.Visitor[AdjTypeJa,collection.mutable.Map[String,String]] with
                              Absyn.URI.Visitor[URI,collection.mutable.Map[String,String]] {
 /* Statements */
     def visit(p : Absyn.EStatments, arg : collection.mutable.Map[String,String]) = { 
@@ -54,7 +55,10 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       p.verbpattern_.accept(this,arg)
     }
     def visit(p : Absyn.EAdjective, arg : collection.mutable.Map[String,String]) = {
-      p.adjectivepattern_.accept(this,arg)
+      p.adjectivepattern_.accept(this,arg + ("pos" -> "adjective"))
+    }
+    def visit(p : Absyn.EAdjectiveJa, arg : collection.mutable.Map[String,String]) = {
+        p.adjectivepattern_.accept(this, arg + ("pos" -> p.adjtypeja_.accept(this,arg).toString))
     }
 /* NounPattern */
     def visit(p : Absyn.EName, arg : collection.mutable.Map[String,String]) = Name(
@@ -266,7 +270,14 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
       }
     }
 /* AP */
-    def visit(p : Absyn.EAPSimple, arg : collection.mutable.Map[String,String]) = AP(p.string_ / pos.adjective)
+    def visit(p : Absyn.EAPSimple, arg : collection.mutable.Map[String,String]) = { //AP(p.string_ / pos.adjective)
+      arg("pos") match {
+        case "adjectiveNa" => AP(p.string_ / pos.adjectiveNa)
+        case "adjectiveI" => AP(p.string_ / pos.adjectiveI)
+        case "adjective" => AP(p.string_ / pos.adjective)
+        case _ => throw new IllegalArgumentException("non-adjective-POS on adjective")
+      }
+    }
     def visit(p : Absyn.EAPComplex, arg : collection.mutable.Map[String,String]) = {
       val words = p.listpostaggedword_.map{_.accept(this,arg)}
       words.find(_._2) match {
@@ -504,6 +515,10 @@ class PatternVisitor extends Absyn.Statements.Visitor[Seq[Lexicon],collection.mu
     def visit(p : Absyn.ENeutGender, arg : collection.mutable.Map[String,String]) = Neuter
     def visit(p : Absyn.ECommonGender, arg : collection.mutable.Map[String,String]) = CommonGender
     def visit(p : Absyn.EOtherGender, arg : collection.mutable.Map[String,String]) = OtherGender
+    
+/* Japanese Adjective Types */
+    def visit(p : Absyn.EAdjTypeNa, arg : collection.mutable.Map[String,String]) = AdjTypeNa
+    def visit(p : Absyn.EAdjTypeI, arg : collection.mutable.Map[String,String]) = AdjTypeI
     
 /* URI */
     def visit(p : Absyn.EQName, arg : collection.mutable.Map[String,String]) = URI.create(

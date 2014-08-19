@@ -21,6 +21,7 @@ public class ComposVisitor<A> implements
   net.lemonmodel.patterns.parser.Absyn.Category.Visitor<net.lemonmodel.patterns.parser.Absyn.Category,A>,
   net.lemonmodel.patterns.parser.Absyn.POSTag.Visitor<net.lemonmodel.patterns.parser.Absyn.POSTag,A>,
   net.lemonmodel.patterns.parser.Absyn.Gender.Visitor<net.lemonmodel.patterns.parser.Absyn.Gender,A>,
+  net.lemonmodel.patterns.parser.Absyn.AdjTypeJa.Visitor<net.lemonmodel.patterns.parser.Absyn.AdjTypeJa,A>,
   net.lemonmodel.patterns.parser.Absyn.URI.Visitor<net.lemonmodel.patterns.parser.Absyn.URI,A>
 {
 /* Statements */
@@ -90,6 +91,13 @@ public class ComposVisitor<A> implements
       AdjectivePattern adjectivepattern_ = p.adjectivepattern_.accept(this, arg);
 
       return new net.lemonmodel.patterns.parser.Absyn.EAdjective(adjectivepattern_);
+    }
+    public Pattern visit(net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa p, A arg)
+    {
+      AdjectivePattern adjectivepattern_ = p.adjectivepattern_.accept(this, arg);
+      AdjTypeJa adjtypeja_ = p.adjtypeja_.accept(this, arg);
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa(adjectivepattern_, adjtypeja_);
     }
 
 /* NounPattern */
@@ -829,6 +837,18 @@ public class ComposVisitor<A> implements
     {
 
       return new net.lemonmodel.patterns.parser.Absyn.EOtherGender();
+    }
+
+/* AdjTypeJa */
+    public AdjTypeJa visit(net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa();
+    }
+    public AdjTypeJa visit(net.lemonmodel.patterns.parser.Absyn.EAdjTypeI p, A arg)
+    {
+
+      return new net.lemonmodel.patterns.parser.Absyn.EAdjTypeI();
     }
 
 /* URI */

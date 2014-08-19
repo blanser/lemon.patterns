@@ -8,6 +8,7 @@ public abstract class Pattern implements java.io.Serializable {
     public R visit(net.lemonmodel.patterns.parser.Absyn.ENounWithGender p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EVerb p, A arg);
     public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjective p, A arg);
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa p, A arg);
 
   }
 

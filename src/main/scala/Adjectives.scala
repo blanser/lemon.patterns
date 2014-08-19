@@ -59,6 +59,11 @@ trait Adjective extends Pattern {
     </lemon:LexicalEntry>
 }
 
+sealed trait AdjTypeJa
+
+object AdjTypeNa extends AdjTypeJa { override def toString = "adjectiveNa" }
+object AdjTypeI extends AdjTypeJa { override def toString = "adjectiveI" }
+
 case class IntersectiveAdjective(val lemma : AP,
                                       val sense : URI = null,
                                       val forms : Seq[Form] = Nil) extends Adjective {

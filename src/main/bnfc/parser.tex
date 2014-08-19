@@ -69,20 +69,21 @@ The reserved words used in parser are the following: \\
 {\reserved{dative}} &{\reserved{determiner}} &{\reserved{dual}} \\
 {\reserved{durative}} &{\reserved{feminine}} &{\reserved{firstPerson}} \\
 {\reserved{for}} &{\reserved{future}} &{\reserved{genitive}} \\
-{\reserved{gerundive}} &{\reserved{head}} &{\reserved{imperative}} \\
-{\reserved{imperfect}} &{\reserved{indicative}} &{\reserved{infinitive}} \\
-{\reserved{instant}} &{\reserved{interjection}} &{\reserved{masculine}} \\
-{\reserved{neuter}} &{\reserved{nominative}} &{\reserved{nontelic}} \\
-{\reserved{noun}} &{\reserved{numeral}} &{\reserved{optional}} \\
-{\reserved{otherGender}} &{\reserved{participle}} &{\reserved{particle}} \\
-{\reserved{past}} &{\reserved{plural}} &{\reserved{point}} \\
-{\reserved{postposition}} &{\reserved{preposition}} &{\reserved{present}} \\
-{\reserved{pronoun}} &{\reserved{propObj}} &{\reserved{propSubj}} \\
-{\reserved{property}} &{\reserved{punctuation}} &{\reserved{relationalArg}} \\
-{\reserved{restrictedTo}} &{\reserved{secondPerson}} &{\reserved{semiColon}} \\
-{\reserved{singular}} &{\reserved{slash}} &{\reserved{subjunctive}} \\
-{\reserved{superlative}} &{\reserved{telic}} &{\reserved{thirdPerson}} \\
-{\reserved{verb}} &{\reserved{with}} & \\
+{\reserved{gerundive}} &{\reserved{head}} &{\reserved{i}} \\
+{\reserved{imperative}} &{\reserved{imperfect}} &{\reserved{indicative}} \\
+{\reserved{infinitive}} &{\reserved{instant}} &{\reserved{interjection}} \\
+{\reserved{masculine}} &{\reserved{na}} &{\reserved{neuter}} \\
+{\reserved{nominative}} &{\reserved{nontelic}} &{\reserved{noun}} \\
+{\reserved{numeral}} &{\reserved{optional}} &{\reserved{otherGender}} \\
+{\reserved{participle}} &{\reserved{particle}} &{\reserved{past}} \\
+{\reserved{plural}} &{\reserved{point}} &{\reserved{postposition}} \\
+{\reserved{preposition}} &{\reserved{present}} &{\reserved{pronoun}} \\
+{\reserved{propObj}} &{\reserved{propSubj}} &{\reserved{property}} \\
+{\reserved{punctuation}} &{\reserved{relationalArg}} &{\reserved{restrictedTo}} \\
+{\reserved{secondPerson}} &{\reserved{semiColon}} &{\reserved{singular}} \\
+{\reserved{slash}} &{\reserved{subjunctive}} &{\reserved{superlative}} \\
+{\reserved{telic}} &{\reserved{thirdPerson}} &{\reserved{verb}} \\
+{\reserved{with}} & & \\
 \end{tabular}\\
 
 The symbols used in parser are the following: \\
@@ -124,6 +125,7 @@ All other symbols are terminals.\\
  & {\delimit}  &{\nonterminal{NounPattern}} {\nonterminal{Gender}}  \\
  & {\delimit}  &{\nonterminal{VerbPattern}}  \\
  & {\delimit}  &{\nonterminal{AdjectivePattern}}  \\
+ & {\delimit}  &{\nonterminal{AdjectivePattern}} {\nonterminal{AdjTypeJa}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}
@@ -313,6 +315,11 @@ All other symbols are terminals.\\
  & {\delimit}  &{\terminal{neuter}}  \\
  & {\delimit}  &{\terminal{commonGender}}  \\
  & {\delimit}  &{\terminal{otherGender}}  \\
+\end{tabular}\\
+
+\begin{tabular}{lll}
+{\nonterminal{AdjTypeJa}} & {\arrow}  &{\terminal{na}}  \\
+ & {\delimit}  &{\terminal{i}}  \\
 \end{tabular}\\
 
 \begin{tabular}{lll}

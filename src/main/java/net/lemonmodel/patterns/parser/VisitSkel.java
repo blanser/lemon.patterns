@@ -92,6 +92,15 @@ public class VisitSkel
 
       return null;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa p, A arg)
+    {
+      /* Code For EAdjectiveJa Goes Here */
+
+      p.adjectivepattern_.accept(new AdjectivePatternVisitor<R,A>(), arg);
+      p.adjtypeja_.accept(new AdjTypeJaVisitor<R,A>(), arg);
+
+      return null;
+    }
 
   }
   public class NounPatternVisitor<R,A> implements NounPattern.Visitor<R,A>
@@ -1067,6 +1076,24 @@ public class VisitSkel
     public R visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg)
     {
       /* Code For EOtherGender Goes Here */
+
+
+      return null;
+    }
+
+  }
+  public class AdjTypeJaVisitor<R,A> implements AdjTypeJa.Visitor<R,A>
+  {
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa p, A arg)
+    {
+      /* Code For EAdjTypeNa Goes Here */
+
+
+      return null;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjTypeI p, A arg)
+    {
+      /* Code For EAdjTypeI Goes Here */
 
 
       return null;

@@ -405,6 +405,21 @@ public class PrettyPrinter
     buf_.delete(0,buf_.length());
     return temp;
   }
+  public static String print(net.lemonmodel.patterns.parser.Absyn.AdjTypeJa foo)
+  {
+    pp(foo, 0);
+    trim();
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
+  public static String show(net.lemonmodel.patterns.parser.Absyn.AdjTypeJa foo)
+  {
+    sh(foo);
+    String temp = buf_.toString();
+    buf_.delete(0,buf_.length());
+    return temp;
+  }
   public static String print(net.lemonmodel.patterns.parser.Absyn.URI foo)
   {
     pp(foo, 0);
@@ -514,6 +529,14 @@ public class PrettyPrinter
        net.lemonmodel.patterns.parser.Absyn.EAdjective _eadjective = (net.lemonmodel.patterns.parser.Absyn.EAdjective) foo;
        if (_i_ > 0) render(_L_PAREN);
        pp(_eadjective.adjectivepattern_, 0);
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa _eadjectiveja = (net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       pp(_eadjectiveja.adjectivepattern_, 0);
+       pp(_eadjectiveja.adjtypeja_, 0);
        if (_i_ > 0) render(_R_PAREN);
     }
   }
@@ -1721,6 +1744,24 @@ public class PrettyPrinter
     }
   }
 
+  private static void pp(net.lemonmodel.patterns.parser.Absyn.AdjTypeJa foo, int _i_)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa _eadjtypena = (net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("na");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+    else     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdjTypeI)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAdjTypeI _eadjtypei = (net.lemonmodel.patterns.parser.Absyn.EAdjTypeI) foo;
+       if (_i_ > 0) render(_L_PAREN);
+       render("i");
+       if (_i_ > 0) render(_R_PAREN);
+    }
+  }
+
   private static void pp(net.lemonmodel.patterns.parser.Absyn.URI foo, int _i_)
   {
     if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EQName)
@@ -1844,6 +1885,15 @@ public class PrettyPrinter
        render("(");
        render("EAdjective");
        sh(_eadjective.adjectivepattern_);
+       render(")");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa _eadjectiveja = (net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa) foo;
+       render("(");
+       render("EAdjectiveJa");
+       sh(_eadjectiveja.adjectivepattern_);
+       sh(_eadjectiveja.adjtypeja_);
        render(")");
     }
   }
@@ -2767,6 +2817,20 @@ public class PrettyPrinter
     {
        net.lemonmodel.patterns.parser.Absyn.EOtherGender _eothergender = (net.lemonmodel.patterns.parser.Absyn.EOtherGender) foo;
        render("EOtherGender");
+    }
+  }
+
+  private static void sh(net.lemonmodel.patterns.parser.Absyn.AdjTypeJa foo)
+  {
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa _eadjtypena = (net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa) foo;
+       render("EAdjTypeNa");
+    }
+    if (foo instanceof net.lemonmodel.patterns.parser.Absyn.EAdjTypeI)
+    {
+       net.lemonmodel.patterns.parser.Absyn.EAdjTypeI _eadjtypei = (net.lemonmodel.patterns.parser.Absyn.EAdjTypeI) foo;
+       render("EAdjTypeI");
     }
   }
 

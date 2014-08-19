@@ -63,6 +63,12 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       r = combine(p.adjectivepattern_.accept(this, arg), r, arg);
       return r;
     }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjectiveJa p, A arg) {
+      R r = leaf(arg);
+      r = combine(p.adjectivepattern_.accept(this, arg), r, arg);
+      r = combine(p.adjtypeja_.accept(this, arg), r, arg);
+      return r;
+    }
 
 /* NounPattern */
     public R visit(net.lemonmodel.patterns.parser.Absyn.EName p, A arg) {
@@ -661,6 +667,16 @@ public abstract class FoldVisitor<R,A> implements AllVisitor<R,A> {
       return r;
     }
     public R visit(net.lemonmodel.patterns.parser.Absyn.EOtherGender p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+
+/* AdjTypeJa */
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjTypeNa p, A arg) {
+      R r = leaf(arg);
+      return r;
+    }
+    public R visit(net.lemonmodel.patterns.parser.Absyn.EAdjTypeI p, A arg) {
       R r = leaf(arg);
       return r;
     }

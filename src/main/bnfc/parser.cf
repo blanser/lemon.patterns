@@ -14,6 +14,7 @@ ENoun. Pattern ::= NounPattern ;
 ENounWithGender. Pattern ::= NounPattern Gender ;
 EVerb. Pattern ::= VerbPattern ;
 EAdjective. Pattern ::= AdjectivePattern ;
+EAdjectiveJa. Pattern ::= AdjectivePattern AdjTypeJa ;
 
 EName. NounPattern ::= "Name" "(" PNP "," URI ")" ;
 EClassNoun. NounPattern ::= "ClassNoun" "(" NP "," URI ")" ;
@@ -147,6 +148,9 @@ EFemGender. Gender ::= "feminine" ;
 ENeutGender. Gender ::= "neuter" ;
 ECommonGender. Gender ::= "commonGender" ;
 EOtherGender. Gender ::= "otherGender" ;
+
+EAdjTypeNa. AdjTypeJa ::= "na" ;
+EAdjTypeI. AdjTypeJa ::= "i" ;
 
 EQName. URI ::= Ident ":" Ident ;
 EQName2. URI ::= ":" Ident ;
